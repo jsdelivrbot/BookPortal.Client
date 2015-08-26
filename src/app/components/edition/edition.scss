@@ -1,0 +1,26 @@
+.edition-block-normal {
+  display: block;
+  float: left;
+  margin: 5px 27px;
+  padding: 5px 10px;
+  text-align: center;
+  height: 150px;
+  border-top: 8px solid orange;
+  white-space: nowrap;
+
+  img {
+    width: 60px;
+  }
+
+  &.red {
+    border-top: 8px solid red;
+  }
+
+  &.green {
+    border-top: 8px solid green;
+  }
+
+  &.gray {
+    border-top: 8px solid gray;
+  }
+}
