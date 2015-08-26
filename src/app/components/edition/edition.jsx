@@ -1,3 +1,5 @@
+var Globals = require('../../globals');
+
 var EditionMini = React.createClass({
     render: function() {
         var classString = 'edition-block-normal';
@@ -27,15 +29,3 @@ var EditionMiniList = React.createClass({
         </div>;
     }
 });
-
-var getWorkEditions = function(workId) {
-    fetch(`${Globals.apiUrl}/works/${workId}/editions`)
-        .then(response => response.json())
-        .then(json => _.map(json.result.rows, (item) => item))
-        .then(editions => React.render(<EditionMiniList editions={editions} />, document.getElementById('editions')))
-        .catch(function(ex) {
-            console.log('parsing failed', ex)
-        })
-}
-
-getWorkEditions(1);

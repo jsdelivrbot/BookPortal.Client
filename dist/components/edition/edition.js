@@ -1,5 +1,7 @@
 'use strict';
 
+var Globals = require('../../globals');
+
 var EditionMini = React.createClass({
     displayName: 'EditionMini',
 
@@ -45,20 +47,4 @@ var EditionMiniList = React.createClass({
         );
     }
 });
-
-var getWorkEditions = function getWorkEditions(workId) {
-    fetch(Globals.apiUrl + '/works/' + workId + '/editions').then(function (response) {
-        return response.json();
-    }).then(function (json) {
-        return _.map(json.result.rows, function (item) {
-            return item;
-        });
-    }).then(function (editions) {
-        return React.render(React.createElement(EditionMiniList, { editions: editions }), document.getElementById('editions'));
-    })['catch'](function (ex) {
-        console.log('parsing failed', ex);
-    });
-};
-
-getWorkEditions(1);
 //# sourceMappingURL=../../components/edition/edition.js.map

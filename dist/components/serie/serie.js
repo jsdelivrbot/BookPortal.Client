@@ -11,7 +11,7 @@ var SerieTreeItem = React.createClass({
         var childItems;
         if (this.props.treeitem.series) {
             childItems = React.createElement(
-                'ol',
+                'ul',
                 null,
                 this.props.treeitem.series.map(function (result) {
                     return React.createElement(
@@ -46,17 +46,5 @@ var SerieTreeItem = React.createClass({
     }
 });
 
-var getSerieTree = function getSerieTree(serieid) {
-    fetch(Globals.apiUrl + '/series/' + serieid + '/tree').then(function (response) {
-        return response.json();
-    }).then(function (json) {
-        return json.result;
-    }).then(function (tree) {
-        return React.render(React.createElement(SerieTreeItem, { treeitem: tree, serieid: serieid }), document.getElementById('tree'));
-    })['catch'](function (ex) {
-        console.log('parsing failed', ex);
-    });
-};
-
-getSerieTree(2);
+module.exports = SerieTreeItem;
 //# sourceMappingURL=../../components/serie/serie.js.map

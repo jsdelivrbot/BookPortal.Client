@@ -4,9 +4,9 @@ var SerieTreeItem = React.createClass({
 
         var childItems;
         if (this.props.treeitem.series) {
-            childItems = <ol>
+            childItems = <ul>
                 {this.props.treeitem.series.map(result => <li><SerieTreeItem key={result.serieid} treeitem={result} serieid={this.props.serieid} /></li> )}
-            </ol>
+            </ul>
         }
 
         var linkItem = this.props.serieid === this.props.treeitem.serieid ?
@@ -20,14 +20,4 @@ var SerieTreeItem = React.createClass({
     }
 });
 
-var getSerieTree = function(serieid) {
-    fetch(`${Globals.apiUrl}/series/${serieid}/tree`)
-        .then(response => response.json())
-        .then(json => json.result)
-        .then(tree => React.render(<SerieTreeItem treeitem={tree} serieid={serieid} />, document.getElementById('tree')))
-        .catch(function(ex) {
-            console.log('parsing failed', ex)
-        })
-}
-
-getSerieTree(2);
+module.exports = SerieTreeItem;
