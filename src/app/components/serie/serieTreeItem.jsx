@@ -1,6 +1,6 @@
 var SerieTreeItem = React.createClass({
     render: function() {
-        var serieUrl = '/series/' + this.props.treeitem.serieid;
+        var serieUrl = `/series/${this.props.treeitem.serieid}`;
 
         var childItems;
         if (this.props.treeitem.series) {

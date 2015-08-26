@@ -9,7 +9,7 @@ var EditionMini = React.createClass({
         }
 
         var editionSrc = Globals.imageCdnUrl + this.props.item.editionid;
-        var editionUrl = '/editions/' + this.props.item.editionid;
+        var editionUrl = `/editions/${this.props.item.editionid}`;
 
         return <div className={classString}>
             <a href={editionUrl}>
