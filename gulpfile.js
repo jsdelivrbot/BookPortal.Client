@@ -63,6 +63,7 @@ gulp.task('serve', ['build'], function() {
     gulp.watch('src/styles/*.scss', ['styles', reload]);
     gulp.watch('src/app/**/*.scss', ['styles', reload]);
     gulp.watch('src/app/**/*.jsx', ['scripts', reload]);
+    gulp.watch('src/app/**/*.js', ['scripts', reload]);
     gulp.watch('src/*.html', ['html', reload]);
 });
 
