@@ -9,7 +9,13 @@ const reload = browserSync.reload;
 gulp.task('clean', del.bind(null, ['dist']));
 
 gulp.task('styles', function () {
-    return gulp.src(['src/app/**/*.scss', 'src/styles/*.scss'])
+    var styles = [
+        'bower_components/normalize.css/*.css',
+        'src/styles/*.scss',
+        'src/app/**/*.scss'
+    ];
+
+    return gulp.src(styles)
         .pipe($.concat('main.css'))
         .pipe($.sourcemaps.init())
         .pipe($.sass.sync().on('error', $.sass.logError))

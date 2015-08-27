@@ -10,14 +10,14 @@ function getPerson(personId) {
 function getPersonGenres(personId) {
     return fetch(`${Globals.apiUrl}/persons/${personId}/genres`)
         .then(response => response.json())
-        .then(json => genres = json.result)
+        .then(json => json.result)
         .catch(ex => console.log('XHR Failed for getPersonGenres', ex));
 }
 
 function getPersonWorks(personId) {
     return fetch(`${Globals.apiUrl}/persons/${personId}/works`)
         .then(response => response.json())
-        .then(json => works = _.map(json.result.rows, item => item))
+        .then(json => _.map(json.result.rows, item => item))
         .catch(ex => console.log('XHR Failed for getPersonGenres', ex));
 }
 

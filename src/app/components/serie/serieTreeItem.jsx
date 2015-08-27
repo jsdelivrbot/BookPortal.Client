@@ -13,10 +13,10 @@ var SerieTreeItem = React.createClass({
             <b>{this.props.treeitem.name}</b> :
             <a href={serieUrl}>{this.props.treeitem.name}</a>;
 
-        return <div>
-            <p>{linkItem}</p>
+        return <span>
+            {linkItem}
             {childItems}
-        </div>;
+        </span>;
     }
 });
 

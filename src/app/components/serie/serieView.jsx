@@ -1,11 +1,16 @@
 var SerieInfo = require('./serieInfo');
-var EditionMiniList = require('../edition/editionMiniList');
+var EditionMini = require('../edition/editionMini');
 
 var SerieView = React.createClass({
     render: function() {
         return <div>
             <SerieInfo tree={this.props.tree} serie={this.props.serie} />
-            <EditionMiniList editions={this.props.editions} />
+
+            <div className="editions-list">
+                {this.props.editions.map(function(result) {
+                    return <EditionMini key={result.editionid} item={result}  />;
+                })}
+            </div>
         </div>;
     }
 });

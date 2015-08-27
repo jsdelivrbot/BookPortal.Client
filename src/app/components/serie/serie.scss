@@ -1,3 +1,75 @@
-.serie {
+.serie-info {
+  h2 {
+    margin: 0;
+    margin-bottom: 2px;
+    font-size: inherit;
+  }
+}
 
+.serie-info-block-detail {
+  width: 100%;
+
+  tr {
+    background-color: #F9FAFB;
+
+    td {
+      padding: 10px;
+      border: 1px solid #D8E1E6;
+      vertical-align: top;
+
+      &.serie-tree {
+        width: 228px;
+        min-width: 228px;
+        vertical-align: top;
+
+        > p {
+          font-weight: bold;
+          margin: 0 0 8px 0;
+          padding-bottom: 4px;
+          border-bottom: 1px solid black;
+        }
+
+        ul {
+          ul {
+            padding-left: 20px;
+
+            li {
+              display: block;
+
+              & + li {
+                margin: 2px 0;
+              }
+
+              &:before {
+                content: "› ";
+              }
+            }
+          }
+        }
+      }
+
+      &.serie-description {
+        width: 100%;
+        border: 1px solid #D8E1E6;
+
+        b {
+          font-weight: bold;
+        }
+
+        .unfinished {
+          margin: 20px 0 5px 20px;
+          color: #999;
+
+          li {
+            list-style-image: url('https://data.fantlab.ru/images/!.gif');
+          }
+        }
+      }
+    }
+  }
+}
+
+.editions-list {
+  column-count: 2;
+  column-gap: 20px;
 }
