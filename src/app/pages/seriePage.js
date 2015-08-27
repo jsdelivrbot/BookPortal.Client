@@ -10,9 +10,7 @@ function getSerie(serieid) {
     return fetch(`${Globals.apiUrl}/series/${serieid}`)
         .then(response => response.json())
         .then(json => json.result)
-        .catch(function(ex) {
-            console.log('XHR Failed for getSerie', ex)
-        });
+        .catch(ex => console.log('XHR Failed for getSerie', ex));
 }
 
 function getSerieTree(serieid) {
@@ -21,9 +19,7 @@ function getSerieTree(serieid) {
         .then(json => {
             tree = json.result;
         })
-        .catch(function(ex) {
-            console.log('XHR Failed for getSerieTree', ex)
-        });
+        .catch(ex => console.log('XHR Failed for getSerieTree', ex));
 }
 
 function getSerieEditions(serieid) {
@@ -32,9 +28,7 @@ function getSerieEditions(serieid) {
         .then(json => {
             editions = _.map(json.result.rows, item => item);
         })
-        .catch(function(ex) {
-            console.log('XHR Failed for getSerieEditions', ex)
-        });
+        .catch(ex =>console.log('XHR Failed for getSerieEditions', ex));
 }
 
 getSerie(serieId).then(function(serie) {

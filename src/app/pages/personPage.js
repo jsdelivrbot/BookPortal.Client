@@ -1,18 +1,17 @@
 var PersonView = require('../components/person/personView');
+var PersonService = require('../dataservices/personService');
 var Globals = require('../globals');
 
 var element = document.getElementById('person');
 var personId = +(element.getAttribute('data-person-id'));
 
-function getPerson(personId) {
-    return fetch(`${Globals.apiUrl}/persons/${personId}`)
-        .then(response => response.json())
-        .then(json => json.result)
-        .catch(function(ex) {
-            console.log('XHR Failed for getPerson', ex)
-        });
-}
+var genres;
+var works;
 
-getPerson(personId).then(function(person) {
-    React.render(<PersonView person={person} />, element)
+PersonService.getPerson(personId).then(function(person) {
+    var promises = [PersonService.getPersonGenres(person.personid), PersonService.getPersonWorks(person.personid)];
+    Promise.all(promises).then(function() {
+        React.render(<PersonView person={person} />, element)
+    });
 });
+
