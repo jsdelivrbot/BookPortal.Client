@@ -2,20 +2,21 @@ var Globals = require('../../globals');
 
 var EditionMini = React.createClass({
     render: function() {
-        var classString = 'edition-block-normal';
+        var classString = 'edition-block-mini';
+        var correctColor = 'orange';
 
-        if (this.props.item.correct) {
-            classString += ' ' + this.props.item.correct;
+        if (this.props.edition.correct) {
+            classString += ' ' + correctColor;
         }
 
-        var editionSrc = Globals.imageCdnUrl + this.props.item.editionid;
-        var editionUrl = `/editions/${this.props.item.editionid}`;
+        var editionCoverSrc = Globals.imageCdnUrl + this.props.edition.editionid;
+        var editionUrl = `/editions/${this.props.edition.editionid}`;
 
         return <div className={classString}>
             <a href={editionUrl}>
-                <img src={editionSrc} alt={this.props.item.name} title={this.props.item.name} /></a>
+                <img src={editionCoverSrc} alt={this.props.edition.name} title={this.props.edition.name} /></a>
             <br />
-            <span>{this.props.item.year} г.</span>
+            <span>{this.props.edition.year} г.</span>
         </div>;
     }
 });
