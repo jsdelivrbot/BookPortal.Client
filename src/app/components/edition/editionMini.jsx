@@ -9,7 +9,7 @@ var EditionMini = React.createClass({
             classString += ' ' + correctColor;
         }
 
-        var editionCoverSrc = Globals.imageCdnUrl + this.props.edition.editionid;
+        var editionCoverSrc = `${Globals.imageCdnUrl}/editions/small/${this.props.edition.editionid}`;
         var editionUrl = `/editions/${this.props.edition.editionid}`;
 
         return <div className={classString}>

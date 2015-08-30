@@ -1,5 +1,5 @@
 var SerieInfo = require('./serieInfo');
-var EditionNormal = require('../edition/editionNormal');
+var EditionMini = require('../edition/editionMini');
 
 var SerieView = React.createClass({
     render: function() {
@@ -8,7 +8,7 @@ var SerieView = React.createClass({
 
             <div className="editions-list">
                 {this.props.editions.map(function(result) {
-                    return <EditionNormal key={result.editionid} edition={result}  />;
+                    return <EditionMini key={result.editionid} edition={result}  />;
                 })}
             </div>
         </div>;

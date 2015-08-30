@@ -1,0 +1,688 @@
+.genrelist {
+  display: inline;
+  list-style: none;
+  padding: 0;
+}
+
+.genrelist li {
+  display: inline;
+}
+
+.genrelist li:after {
+  content: ", ";
+}
+
+.genrelist li:last-child:after {
+  content: "";
+}
+
+$header-default-color: #3178A8;
+$header-innactive-color: #949494;
+
+@mixin user-select() {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+/* person info */
+.person-show {
+  .paragraph-block p {
+    text-align: justify;
+    text-indent: 0.3in;
+    margin: 6px 0 0;
+    word-wrap: break-word;
+  }
+
+  div.main-info-block {
+    min-width: 210px;
+  }
+
+  h2.main-info-header {
+    background: #3178a8;
+    color: #ffffff;
+    -webkit-border-radius: 10px 10px 0 0;
+    border-radius: 10px 10px 0 0;
+    @include user-select();
+    cursor: inherit;
+    padding: 4px 0 4px 18px;
+    position: relative;
+    min-height: 14px;
+    margin: 0;
+  }
+
+  h2.main-info-header.innactive {
+    background-color: #C4C4C4;
+  }
+
+  h2.main-info-header span {
+    font-weight: bold;
+  }
+
+  h2.main-info-header.allow-toggle {
+    cursor: pointer;
+  }
+
+  h2.allow-toggle:before {
+    background: url('https://data.fantlab.ru/images/arrow_state_grey_right.png');
+    height: 16px;
+    width: 16px;
+    content: ' ';
+    position: absolute;
+    top: 3px;
+    left: 2px;
+  }
+
+  div.main-info-block.collapsed .main-info-header:before {
+    background: url('https://data.fantlab.ru/images/arrow_state_grey_expanded.png');
+  }
+
+  div.main-info-block.collapsed .main-info-detail {
+    display: none !important;
+  }
+
+  div.main-info-detail {
+    margin-top: 3px;
+    border:1px solid #D8E1E6;
+    background-color: #F9FAFB;
+    min-height: 60px;
+    padding: 8px 8px 16px 8px;
+  }
+
+  .main-info-detail {
+    img {
+      &.imgright {
+        margin-bottom: 4px;
+        margin-left: 8px;
+        float: right;
+      }
+
+      &.imgleft {
+        margin-bottom: 4px;
+        margin-right: 8px;
+        float: left;
+      }
+    }
+  }
+
+  .person-info-top-info {
+    border-spacing: 2px;
+    border-collapse: separate;
+
+    td {
+      padding: 2px;
+
+      &.autor-genres img {
+        height: 5px;
+        border: 1px solid #3178A8;
+      }
+    }
+  }
+
+  .person-info-bio-notes {
+    & > h3 {
+      font-weight: bold;
+    }
+
+    & > div {
+      margin-left: 0.3in;
+    }
+  }
+
+  .person-registered {
+    margin-top: 15px;
+
+    b {
+      font-weight: bold;
+    }
+  }
+
+  .person-blogs {
+    margin-top: 15px;
+
+    & > h3 {
+      font-weight: bold;
+    }
+
+    & > ul {
+      margin: 2px 0 5px 40px;
+      list-style-type: disc;
+
+      & > li.noread {
+        color: #FF7E00;
+      }
+
+      span {
+        font-size: x-small;
+        color: gray;
+      }
+    }
+
+    & > div {
+      border-top: 1px dotted gray;
+      padding: 4px 4px 4px 12px;
+
+      .add-article img {
+        vertical-align: middle;
+      }
+    }
+  }
+
+  .person-info-sites {
+    margin-top: 15px;
+
+    & > h3 {
+      font-weight: bold;
+    }
+
+    & > ul {
+      margin-left: 0.3in;
+
+      li {
+        position: relative;
+        padding-left: 20px;
+        margin-top: 5px;
+
+        a {
+          font-weight: bold;
+        }
+
+        &:before {
+          height: 12px;
+          width: 12px;
+          top: 0;
+          left: 0;
+          position: absolute;
+          content: ' ';
+        }
+
+        &.icon-none:before {
+          list-style-image: none;
+        }
+
+        &.icon-home:before {
+          background: url('https://data.fantlab.ru/images/pl_home.png');
+        }
+
+        &.icon-forum:before {
+          background: url('https://data.fantlab.ru/images/spacer.gif');
+        }
+
+        &.icon-facebook:before {
+          background: url('https://data.fantlab.ru/images/pl_facebook.png');
+        }
+
+        &.icon-vkontakte:before {
+          background: url('https://data.fantlab.ru/images/pl_vk.png');
+        }
+
+        &.icon-twitter:before {
+          background: url('https://data.fantlab.ru/images/pl_twitter.png');
+        }
+
+        &.icon-livejournal:before {
+          background: url('https://data.fantlab.ru/images/pl_livejournal.gif');
+        }
+      }
+    }
+  }
+
+  .person-info-bio p {
+    text-indent: 0.3in;
+    text-align: justify;
+    margin-top: 5px;
+  }
+
+  .person-info-bio-copyright {
+    margin-top: 5px;
+    text-align: right;
+  }
+
+  .person-info-articles {
+    margin-top: 15px;
+
+    & > h3 {
+      font-weight: bold;
+    }
+
+    & > ul {
+      margin-left: 0.3in;
+
+      li {
+        margin-top: 5px;
+      }
+    }
+  }
+
+  .person-info-personal {
+    margin-top: 15px;
+  }
+
+  /* person-award override */
+  .person-info-awards {
+    margin-top: 15px;
+
+    & > div {
+      margin-left: 0.3in;
+
+      table {
+        tr td {
+          border: 0;
+          vertical-align: middle;
+
+          & + td {
+            text-align: left;
+            width: auto;
+            border-bottom: inherit;
+          }
+        }
+      }
+    }
+
+    .person-info-award-advanced {
+      margin-left: 72px;
+      font-weight: bold;
+      border-top: 1px solid #D8E1E6;
+    }
+  }
+
+  .person-notes {
+    & > h3 {
+      font-weight: bold;
+      text-indent: 1.5em;
+    }
+
+    & > hr {
+      border-bottom: 1px solid black;
+      color: black;
+      margin: 3px 0;
+    }
+
+    & > ul {
+      margin-left: 40px;
+
+      li {
+        list-style-type: disc;
+      }
+    }
+  }
+
+  .biblio {
+    .sort-control {
+      margin-top: 15px;
+    }
+
+    .biblio-links {
+      margin-top: 30px;
+      margin-bottom: 10px;
+      text-align: right;
+    }
+
+    .lingvo-analyse {
+      margin-top: 15px;
+    }
+  }
+
+  .person-admin-links {
+    margin-top: 15px;
+  }
+
+
+  .sorting-panel {
+    margin: 10px 0;
+  }
+}
+
+/* Author works */
+div.autor-works {
+  margin-top: 15px;
+  font: 8pt Verdana, Arial, sans-serif;
+
+  @for $i from 1 through 4 {
+    &[data-evaluation-size="#{$i}"] .evaluation {
+      width: 47px + $i * 7;
+      display: inline-block;
+    }
+    &[data-comments-size="#{$i}"] .comments {
+      width: 33px + $i * 7;
+      display: inline-block;
+    }
+  }
+
+  .work-type-section {
+    position: relative;
+    margin-bottom: 40px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &.collapsed {
+      margin-bottom: 10px;
+
+      > h2:before {
+        background: url('https://data.fantlab.ru/images/arrow_state_grey_expanded.png');
+      }
+
+      .works-list {
+        display: none !important;
+      }
+
+      .rating-title {
+        display: none !important;
+      }
+    }
+
+    > h2 {
+      background: $header-default-color;
+      color: #ffffff;
+      cursor: pointer;
+      padding: 4px 0 4px 18px;
+      font-weight: bold;
+      border-radius: 10px 10px 0 0;
+      margin: 0;
+      font-size: 1.0em;
+      @include user-select();
+
+      .rating-title {
+        float: right;
+        padding-right: 20px;
+        font-weight: normal;
+      }
+
+      &:before {
+        background: url('https://data.fantlab.ru/images/arrow_state_grey_right.png');
+        height: 16px;
+        width: 16px;
+        content: ' ';
+        position: absolute;
+        top: 3px;
+        left: 2px;
+      }
+    }
+
+    &.plans-author > h2 {
+      background: $header-innactive-color;
+    }
+
+    .works-list {
+      padding-left: 8px;
+      list-style: none;
+
+      .dots {
+        border-bottom: 1px dotted #949494;
+      }
+
+      &.worktypenode {
+        ul {
+          &.works-list {
+            margin-left: 52px;
+          }
+
+          li {
+            dispay: inline-block;
+
+            .work-title:before {
+              margin-left: 5px;
+              content: '�';
+              position: absolute;
+              left: -14px;
+            }
+
+            ul li {
+              margin-left: 5px;
+              .work-title:before {
+                content: '?';
+                position: absolute;
+                left: -14px;
+                top: 2px;
+              }
+
+              ul li {
+                .work-title:before {
+                  margin-left: 5px;
+                  content: '�';
+                  position: absolute;
+                  left: -14px;
+                  top: 0;
+                }
+              }
+            }
+          }
+        }
+
+        .works-part {
+          padding-left: 20px;
+        }
+      }
+
+      &.worktypeplain {
+        .works-part {
+          padding-left: 70px;
+        }
+      }
+
+      .left-toolbar {
+        float: left;
+        width: 50px;
+        margin-top: 9px;
+
+        + .dots {
+          margin-left: 50px;
+        }
+      }
+
+      .work-title {
+        min-height: 22px;
+        display: block;
+        position: relative;
+        top: 11px;
+        margin: 2px 300px 3px 0;
+        line-height: 20px;
+
+        .white-bg {
+          background: #ffffff;
+
+          .ru {
+            color: blue;
+          }
+
+          .en {
+            color: #204090;
+          }
+
+          span.plus {
+            background: #FFFFFF;
+          }
+
+          .about-work {
+            color: #808080;
+          }
+
+          .cross-autor-cycle {
+            color: #808080;
+            font-style: italic;
+          }
+        }
+      }
+
+      li[data-cycle="0"] .in-cycle {
+        display: none;
+      }
+
+      li[data-cycle="0"] .left-toolbar {
+        margin-top: 13px;
+      }
+
+      li[data-cycle="1"] .in-cycle {
+        width: 14px;
+        height: 14px;
+        margin-left: 4px;
+        background: url('https://data.fantlab.ru/images/incycle.gif');
+        display: inline-block;
+        overflow: hidden;
+        text-indent: -500px;
+      }
+
+      li[data-analysis="0"] > .rating .analysis {
+        display: none;
+
+        & + * {
+          margin-left: 19px;
+        }
+      }
+      li[data-analysis="0"][data-work-description="0"] > .rating {
+        a.analysis,
+        a.work-description {
+          display: none;
+          & + * {
+            margin-left: 39px;
+          }
+        }
+      }
+
+      li[data-analysis="1"] > .rating a.analysis {
+        background-image: url('https://data.fantlab.ru/images/lp.gif');
+        display: inline-block;
+        width: 9px;
+        height: 11px;
+
+        &.off {
+          background-image: url('https://data.fantlab.ru/images/lp_off.gif');
+        }
+      }
+
+      .li[data-work-description="0"] > .rating a.work-description {
+        display: none;
+
+        & + * {
+          margin-left: 20px;
+        }
+      }
+
+      .li[data-work-description="1"] > .rating a.work-description {
+        background-image: url('https://data.fantlab.ru/images/hasdescr.gif');
+        display: inline-block;
+        width: 10px;
+        height: 11px;
+      }
+
+      .rating {
+        float: right;
+        margin-top: -11px;
+        height: 20px;
+        position: relative;
+        background: #ffffff;
+
+        > * {
+          margin-right: 5px;
+
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+
+        .comments {
+          color: #00A000;
+          text-align: right;
+
+          &.mycomments {
+            color: #804000;
+          }
+        }
+
+        .autor-mark {
+          height: 14px;
+          width: 26px;
+          border: 1px solid #D8E1E6;
+          font-family: Verdana, serif;
+          text-align: center;
+          cursor: pointer;
+          vertical-align: middle;
+          z-index: 1;
+          background-color: white;
+          display: inline-block;
+        }
+      }
+    }
+  }
+}
+
+/* Person awards on the person page and on the another page */
+.person-info-awards {
+  margin-top: 15px;
+
+  & > h3 {
+    font-weight: bold;
+  }
+
+  & > div {
+    margin-left: 10px;
+
+    table {
+      width: 100%;
+      border-width: 0;
+      border-spacing: 0;
+      border-collapse: separate;
+
+      tr {
+        vertical-align: middle;
+        height: 40px;
+        max-height: 40px;
+
+        td {
+          text-align: center;
+          vertical-align: middle;
+          width: 45px;
+          border-bottom: 1px solid #D8E1E6;
+
+          & + td {
+            text-align: left;
+            width: auto;
+            border-bottom: 1px solid #D8E1E6;
+          }
+
+          img {
+            max-width: 40px;
+            max-height: 30px
+          }
+        }
+
+        &.award_nom {
+          img {
+            opacity: 0.5;
+          }
+
+          td {
+            color: gray;
+          }
+
+          a {
+            color: #556D84;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* person awards page */
+.person-awards {
+  .person-awards-title {
+    height: 42px;
+
+    img {
+      float: left;
+    }
+
+    p {
+      font-weight: bold;
+      font-size: small;
+      padding: 13px 0;
+    }
+  }
+
+  .person-info-awards {
+    margin-top: 15px;
+  }
+}
