@@ -1,8 +1,22 @@
+var PersonWorkSection = require('./personWorkSection');
 var PersonWork = require('./personWork');
 
 var PersonWorkList = React.createClass({
     getInitialState: function() {
         return { optionState: 'year' }
+    },
+
+    getDefaultProps: function() {
+        // sort types
+        let sortOptions = [
+            { label: 'по году публикации', value: 'year' },
+            { label: 'по рейтингу', value: 'rating' },
+            { label: 'по количеству оценок', value: 'markscount' },
+            { label: 'по русскому названию', value: 'rusname' },
+            { label: 'по оригинальному названию', value: 'name' }
+        ];
+
+        return { sortOptions: sortOptions };
     },
 
     componentWillMount: function() {
@@ -21,16 +35,6 @@ var PersonWorkList = React.createClass({
             })
             .map(function (key) { return works[key]; });
         this.setState({ works: works });
-
-        // sort types
-        let sortOptions = [
-            { label: 'по году публикации', value: 'year' },
-            { label: 'по рейтингу', value: 'rating' },
-            { label: 'по количеству оценок', value: 'markscount' },
-            { label: 'по русскому названию', value: 'rusname' },
-            { label: 'по оригинальному названию', value: 'name' }
-        ];
-        this.setState({ sortOptions: sortOptions });
     },
 
     changeSortingHandler: function(event) {
@@ -67,31 +71,18 @@ var PersonWorkList = React.createClass({
         return <div className="autor-works" data-evaluation-size="3" data-comments-size="0">
             <div className="sorting-panel">Сортировка:
                 <select value={this.state.optionState} onChange={this.changeSortingHandler}>
-                {this.state.sortOptions.map(option => {
+                {this.props.sortOptions.map(option => {
                     return <option key={option.value} value={option.value}>{option.label}</option>
                 })}
                 </select>
             </div>
             {this.state.worksinplans.length > 0
-                ? <div className="work-type-section plans-author">
-                    <h2><span>{this.props.person.name}.</span> <span>Планы автора</span><span className='rating-title'>Рейтинг</span></h2>
-                    <ul className="works-list">
-                        {this.sortWorks(this.state.worksinplans).map(work => {
-                            return <PersonWork key={work.workid} work={work} level="1" />;
-                        })}
-                    </ul>
-                </div>
+                ? <PersonWorkSection personName={this.props.person.name} works={this.sortWorks(this.state.worksinplans)} inplans={true} />
                 : null
             }
             {this.state.works.map(worktype => {
-                return <div key={worktype[0].worktypelevel} className="work-type-section">
-                    <h2><span>{this.props.person.name}.</span> <span>{this.props.worktypes[worktype[0].worktypelevel].name}</span><span className='rating-title'>Рейтинг</span></h2>
-                    <ul className="works-list">
-                        {this.sortWorks(worktype).map(work => {
-                            return <PersonWork key={work.workid} work={work} level="1" worktype={this.props.worktypes[worktype[0].worktypelevel]} />;
-                        })}
-                    </ul>
-                </div>;
+                return <PersonWorkSection key={worktype[0].worktypelevel} personName={this.props.person.name}
+                                          works={this.sortWorks(worktype)} worktype={this.props.worktypes[worktype[0].worktypelevel]} />
             })}
         </div>;
     }
