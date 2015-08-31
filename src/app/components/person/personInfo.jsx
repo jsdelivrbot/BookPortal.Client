@@ -44,20 +44,20 @@ var PersonInfo = React.createClass({
                             </ul>
                         </td>
                     </tr>
-                    <tr>
-                        <td>Псевдонимы:</td>
-                        <td>NOT IMPLEMENTED YET</td>
-                    </tr>
                 </table>
 
                 <div className="person-info-bio paragraph-block clearfix">
                     <p>{this.props.person.biography}</p>
                 </div>
                 <p className="person-info-bio-copyright">© {this.props.person.biographysource}</p>
-                <div className="person-info-bio-notes">
-                    <h3>Примечание к биографии:</h3>
-                    <div>{this.props.person.notes}</div>
-                </div>
+                {this.props.person.notes
+                    ? <div className="person-info-bio-notes">
+                        <h3>Примечание к биографии:</h3>
+                        {this.props.person.notes}
+                        <div>{this.props.person.notes}</div>
+                    </div>
+                    : null
+                }
             </div>
         </div>
     }
