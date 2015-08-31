@@ -39,7 +39,7 @@ var PersonInfo = React.createClass({
                         <td>
                             <ul className="genrelist">
                                 {this.props.genres.map(genre => {
-                                    return <li>{genre.name} ({genre.genrecount} из {genre.genretotal})</li>
+                                    return <li key={genre.name}>{genre.name} ({genre.genrecount} из {genre.genretotal})</li>
                                 })}
                             </ul>
                         </td>
@@ -53,7 +53,6 @@ var PersonInfo = React.createClass({
                 {this.props.person.notes
                     ? <div className="person-info-bio-notes">
                         <h3>Примечание к биографии:</h3>
-                        {this.props.person.notes}
                         <div>{this.props.person.notes}</div>
                     </div>
                     : null

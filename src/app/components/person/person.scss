@@ -591,19 +591,6 @@ div.autor-works {
             color: #804000;
           }
         }
-
-        .autor-mark {
-          height: 14px;
-          width: 26px;
-          border: 1px solid #D8E1E6;
-          font-family: Verdana, serif;
-          text-align: center;
-          cursor: pointer;
-          vertical-align: middle;
-          z-index: 1;
-          background-color: white;
-          display: inline-block;
-        }
       }
     }
   }
@@ -685,5 +672,50 @@ div.autor-works {
 
   .person-info-awards {
     margin-top: 15px;
+  }
+}
+
+
+.autor-mark {
+  height: 14px;
+  width: 26px;
+  border: 1px solid #D8E1E6;
+  font-family: Verdana, serif;
+  text-align: center;
+  cursor: pointer;
+  vertical-align: middle;
+  z-index: 1;
+  background-color: white;
+  display: inline-block;
+
+  .selector {
+    border: 1px solid #3178A8;
+    font-family: Verdana;
+    font-size: 12px;
+    background-color: white;
+    z-index: 50;
+    visibility: visible;
+    position: absolute;
+    //left: 0;
+    width: 26px;
+    top: 17px;
+    @include user-select();
+
+    .mark {
+      padding: 2px 2px 2px 5px;
+      text-align: left;
+      cursor: pointer;
+      @include user-select();
+
+      &.selected {
+        color: white;
+        background-color: rgb(49, 120, 168);
+      }
+
+      &:hover {
+        background-color: #E1E6EC;
+        cursor: pointer;
+      }
+    }
   }
 }

@@ -72,14 +72,17 @@ var PersonWorkList = React.createClass({
                 })}
                 </select>
             </div>
-            <div className="work-type-section plans-author">
-                <h2><span>{this.props.person.name}.</span> <span>Планы автора</span><span className='rating-title'>Рейтинг</span></h2>
-                <ul className="works-list">
-                    {this.sortWorks(this.state.worksinplans).map(work => {
-                        return <PersonWork key={work.workid} work={work} level="1" />;
-                    })}
-                </ul>
-            </div>
+            {this.state.worksinplans.length > 0
+                ? <div className="work-type-section plans-author">
+                    <h2><span>{this.props.person.name}.</span> <span>Планы автора</span><span className='rating-title'>Рейтинг</span></h2>
+                    <ul className="works-list">
+                        {this.sortWorks(this.state.worksinplans).map(work => {
+                            return <PersonWork key={work.workid} work={work} level="1" />;
+                        })}
+                    </ul>
+                </div>
+                : null
+            }
             {this.state.works.map(worktype => {
                 return <div key={worktype[0].worktypelevel} className="work-type-section">
                     <h2><span>{this.props.person.name}.</span> <span>{this.props.worktypes[worktype[0].worktypelevel].name}</span><span className='rating-title'>Рейтинг</span></h2>

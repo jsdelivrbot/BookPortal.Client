@@ -1,3 +1,5 @@
+var PersonWorkMark = require('./personWorkMark');
+
 var PersonWork = React.createClass({
     render: function() {
         var level = +(this.props.level);
@@ -90,7 +92,7 @@ var PersonWork = React.createClass({
                     ? <span className="evaluation">{this.props.work.rating} ({this.props.work.votescount})</span>
                     : <span className="evaluation">&nbsp;</span>
                 }
-                <div className="autor-mark" data-enabled="2">{this.props.work.usermark}</div>
+                <PersonWorkMark work={this.props.work} usermark={this.props.work.usermark} />
                 <span className="comments">{this.props.commentscount}</span>
             </div>
             {this.props.work.childworks
