@@ -11,8 +11,18 @@ var PersonWorkSection = React.createClass({
         };
     },
 
+    componentWillMount: function() {
+        var storageObject = JSON.parse(localStorage.getItem('personWorkSection')) || {};
+        if (storageObject[this.props.worktype.worktypeid] !== undefined ) {
+            this.setState({showResults: storageObject[this.props.worktype.worktypeid] })
+        }
+    },
+
     toggleSectionHandler: function() {
+        var storageObject = JSON.parse(localStorage.getItem('personWorkSection')) || {};
         this.setState( { showResults: !this.state.showResults } )
+        storageObject[this.props.worktype.worktypeid] = !this.state.showResults;
+        localStorage.setItem('personWorkSection', JSON.stringify(storageObject));
     },
 
     render: function() {
