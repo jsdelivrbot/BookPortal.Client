@@ -2,7 +2,7 @@ var PersonView = require('../components/person/personView');
 var PersonService = require('../dataservices/personService');
 var ToolsService = require('../../../dataservices/toolsService');
 
-var element = document.getElementById('person');
+var element = document.getElementById('personPage');
 var personId = +(element.getAttribute('data-person-id'));
 
 PersonService.getPerson(personId).then(function(person) {

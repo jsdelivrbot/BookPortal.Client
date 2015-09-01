@@ -1,4 +1,3 @@
-
 var PersonWorkMark = React.createClass({
     getInitialState: function() {
         return {
