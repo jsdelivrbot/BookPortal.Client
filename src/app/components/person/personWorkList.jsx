@@ -77,7 +77,8 @@ var PersonWorkList = React.createClass({
                 </select>
             </div>
             {this.state.worksinplans.length > 0
-                ? <PersonWorkSection personName={this.props.person.name} works={this.sortWorks(this.state.worksinplans)} inplans={true} />
+                ? <PersonWorkSection personName={this.props.person.name} works={this.sortWorks(this.state.worksinplans)}
+                                     worktype={{ worktypeid: 100, name: 'Планы автора' }} inplans={true} />
                 : null
             }
             {this.state.works.map(worktype => {

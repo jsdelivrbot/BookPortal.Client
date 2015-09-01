@@ -5,12 +5,6 @@ var PersonWorkSection = React.createClass({
         return { showResults: true };
     },
 
-    getDefaultProps: function() {
-        return {
-            worktype: { worktypeid: 100, name: "Планы автора" }
-        };
-    },
-
     componentWillMount: function() {
         var storageObject = JSON.parse(localStorage.getItem('personWorkSection')) || {};
         if (storageObject[this.props.worktype.worktypeid] !== undefined ) {
@@ -20,7 +14,7 @@ var PersonWorkSection = React.createClass({
 
     toggleSectionHandler: function() {
         var storageObject = JSON.parse(localStorage.getItem('personWorkSection')) || {};
-        this.setState( { showResults: !this.state.showResults } )
+        this.setState( { showResults: !this.state.showResults } );
         storageObject[this.props.worktype.worktypeid] = !this.state.showResults;
         localStorage.setItem('personWorkSection', JSON.stringify(storageObject));
     },
@@ -28,6 +22,7 @@ var PersonWorkSection = React.createClass({
     render: function() {
         var classString = 'work-type-section';
 
+        // author plans
         if (this.props.worktype.worktypeid === 100) {
             classString += ' plans-author';
         }

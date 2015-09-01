@@ -3,16 +3,21 @@ var Globals = require('../../globals');
 var EditionNormal = React.createClass({
     render: function() {
         this.props.edition.persons = this.props.edition.persons || [];
-        var classString = 'edition-block-normal';
-        var correctColor = 'orange';
         var editionNumber = 1;
 
-        var editionCoverSrc = `${Globals.imageCdnUrl}${this.props.edition.editionid}`;
+        var classString = 'edition-block-full';
+        var correctColor = 'orange';
+
+        if (this.props.edition.correct) {
+            classString += ' ' + correctColor;
+        }
+
+        var editionCoverSrc = `${Globals.imageCdnUrl}/editions/small/${this.props.edition.editionid}`;
         var editionUrl = `/editions/${this.props.edition.editionid}`;
 
-        return <table class="edition-block-full">
+        return <table className={classString}>
             <tr>
-                <td class="edition-block-cover {correctColor}">
+                <td className="edition-block-cover">
                     <a href={editionUrl}><img src={editionCoverSrc} /></a>
                 </td>
                 <td class="edition-block-descr">
@@ -26,7 +31,7 @@ var EditionNormal = React.createClass({
                         <br clear="all" />
                     </div>
                     <div>
-                        <p class="edition-block-name">
+                        <p className="edition-block-name">
                             <a href={editionUrl}><b>{this.props.edition.name}</b></a>
                         </p>
                         <p>{this.props.edition.type} {this.props.edition.year} год</p>
