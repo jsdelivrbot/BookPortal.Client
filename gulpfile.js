@@ -29,7 +29,7 @@ gulp.task('vendor-js', function() {
         'bower_components/lodash/lodash.min.js',
         'bower_components/es6-promise/promise.min.js',
         'bower_components/fetch/fetch.js',
-        'bower_components/react/react.js',
+        'bower_components/react/react.min.js',
         'bower_components/moment/min/moment-with-locales.min.js'];
 
     return gulp.src(scripts)

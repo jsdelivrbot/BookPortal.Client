@@ -12,7 +12,9 @@ var PersonWorkMark = React.createClass({
     },
 
     setMark: function(e) {
-        this.setState({showSelect: false, usermark: parseInt(e.currentTarget.innerHTML) });
+        let userMark = parseInt(e.currentTarget.innerHTML);
+        if (userMark > 0)
+            this.setState({showSelect: false, usermark: userMark });
     },
 
     render: function() {
@@ -22,17 +24,11 @@ var PersonWorkMark = React.createClass({
             </div>
             {this.state.showSelect
                 ? <div className="selector">
-                    <div className="mark" onClick={this.setMark}>-</div>
-                    <div className="mark" onClick={this.setMark}>1</div>
-                    <div className="mark" onClick={this.setMark}>2</div>
-                    <div className="mark selected" onClick={this.setMark}>3</div>
-                    <div className="mark" onClick={this.setMark}>4</div>
-                    <div className="mark" onClick={this.setMark}>5</div>
-                    <div className="mark" onClick={this.setMark}>6</div>
-                    <div className="mark" onClick={this.setMark}>7</div>
-                    <div className="mark" onClick={this.setMark}>8</div>
-                    <div className="mark" onClick={this.setMark}>9</div>
-                    <div className="mark" onClick={this.setMark}>10</div>
+                    {['-', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(item => {
+                            let markClass = this.state.usermark === item ? 'mark selected' : 'mark';
+                            return <div className={markClass} onClick={this.setMark}>{item}</div>
+                        })
+                    }
                 </div>
                 : null
             }
