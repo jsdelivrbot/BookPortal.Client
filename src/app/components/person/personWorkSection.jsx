@@ -31,8 +31,10 @@ var PersonWorkSection = React.createClass({
             classString += ' collapsed';
         }
 
-        return <div className={classString} onClick={this.toggleSectionHandler}>
-            <h2><span>{this.props.personName}.</span> <span>{this.props.worktype.name}</span><span className='rating-title'>Рейтинг</span></h2>
+        return <div className={classString}>
+            <h2 onClick={this.toggleSectionHandler}>
+                <span>{this.props.personName}.</span> <span>{this.props.worktype.name}</span><span className='rating-title'>Рейтинг</span>
+            </h2>
             { this.state.showResults
                 ? <ul className="works-list">
                     {this.props.works.map(work => {
